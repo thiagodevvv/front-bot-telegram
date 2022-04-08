@@ -1,0 +1,22 @@
+.container-home {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.container-pedidos {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.container-accept-pedido-doing {
+  flex: 1;
+  border-left: 2px solid #ECEDF4;
+}
+
+
+.pedido-done {
+  border-left: 2px solid #ECEDF4;
+  flex: 1
+}
