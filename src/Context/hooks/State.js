@@ -7,7 +7,6 @@ export default function StatePages() {
   // 2 = Historico de pedigos
   const [page, setPage] = useState('0')
   function setPageView (page)  {
-    console.log('????')
     setPage(page)
   }
   return {

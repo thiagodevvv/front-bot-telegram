@@ -29,11 +29,11 @@ export default function Dustbin () {
     backgroundColor = "green"
   }
   else if (canDrop) {
-    backgroundColor = "red"
+    backgroundColor = "#98FB98"
   }
   return (
     <div ref={drop} role={'Dustbin'} style={{...style, backgroundColor}}>
-      {isActive ? 'Release to drop' : 'Drag a box here'}
+      <p style={{color: 'black'}}>{isActive ? 'Pronto para soltar' : ''}</p>
     </div>
   ) 
 }

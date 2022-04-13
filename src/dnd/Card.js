@@ -13,7 +13,7 @@ const style = {
 
 
 
-export default function Box ({pedido}) {
+export default function Card ({pedido}) {
   const [{isDragging}, drag] = useDrag(() => ({
     type: ItemTypes.BOX,
     item: { pedido },
@@ -38,8 +38,8 @@ export default function Box ({pedido}) {
       style={{...style, opacity}}
     >
       {pedido.nomeCliente}
-      {pedido.carrinho.map(produto => {
-        return <p>{produto.produto} - Qnt: {produto.qnt}</p>
+      {pedido.carrinho.map((produto, index) => {
+        return <p key={index}>{produto.produto} - Qnt: {produto.qnt}</p>
       })}
       Total pedido: {parseInt(pedido.totalPedido).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}<br/> <br/>
       {pedido.endereco === 'retirada123$$' ? 'Retirada' :  `Entrega: ${pedido.endereco}`}
