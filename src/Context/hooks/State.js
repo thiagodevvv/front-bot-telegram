@@ -6,11 +6,25 @@ export default function StatePages() {
   // 1 = Disparar Mensagens
   // 2 = Historico de pedigos
   const [page, setPage] = useState('0')
+  const [isVisibleModal, setIsVisibleModal] = useState(false)
+  const [pedidoCancelar, setPedidoCancelar] = useState({})
   function setPageView (page)  {
     setPage(page)
   }
+
+  function setOpenModal () {
+    setIsVisibleModal(isVisibleModal ? false : true)
+  }
+  
+  function cancelarPedido (pedido) {
+    setPedidoCancelar(pedido)
+  }
   return {
-    page, 
-    setPageView
+    page,
+    isVisibleModal,
+    pedidoCancelar, 
+    setPageView,
+    setOpenModal,
+    cancelarPedido
   }
 }

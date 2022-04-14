@@ -20,3 +20,54 @@
   border-left: 2px solid #ECEDF4;
   flex: 1
 }
+
+.modal-cancelar {
+  width: 500px;
+  height: auto;
+  background-color: white;
+  position: absolute;
+  margin-left: 490px;
+  margin-top: 50px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #1D5EFF;
+  opacity: 0.8;
+  padding: 10px;
+}
+
+
+.btn-confirma-cancelar {
+  width: 150px;
+  margin-right: 10px;
+  border: none;
+  color: #1D5EFF;
+  opacity: 0.8;
+  font-size: 20px;
+  background-color: transparent;
+}
+
+.btn-confirma-cancelar:hover {
+  cursor: pointer;
+  border: 1px solid #1D5EFF;
+  opacity: 0.8;
+  border-radius: 5px;
+}
+
+.btn-nao-cancelar {
+  font-size: 20px;
+  width: 150px;
+  border: none;
+  color: red;
+  background-color: transparent;
+}
+
+
+.btn-nao-cancelar:hover {
+  cursor: pointer;
+  border: 1px solid red;
+  opacity: 0.8;
+  border-radius: 5px;
+}

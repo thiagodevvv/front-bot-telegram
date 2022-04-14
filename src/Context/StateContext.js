@@ -4,9 +4,9 @@ import StatePages from './hooks/State'
 const Context = createContext()
 
 function StateProvider ({children}) {
-  const { page, setPageView } = StatePages()
+  const { page, setPageView, isVisibleModal, setOpenModal, cancelarPedido, pedidoCancelar } = StatePages()
   return (
-    <Context.Provider value={{page, setPageView}}>
+    <Context.Provider value={{page, setPageView, isVisibleModal, setOpenModal, cancelarPedido, pedidoCancelar}}>
         {children}
     </Context.Provider>
   )

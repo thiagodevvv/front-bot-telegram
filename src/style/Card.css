@@ -1,0 +1,18 @@
+.cancelar-pedido {
+  margin-top: 10px;
+  color: red;
+  text-align: center;
+  width: 150px;
+  background-color: transparent;
+  border: none;
+  font-size: 15px;
+}
+
+
+
+.cancelar-pedido:hover {
+  cursor: pointer;
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+}

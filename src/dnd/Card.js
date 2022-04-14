@@ -1,6 +1,9 @@
+import '../style/Card.css'
+import axios from 'axios'
+import { useContext } from 'react'
+import { Context } from '../Context/StateContext'
 import { useDrag } from 'react-dnd'
 import { ItemTypes } from './ItemTypes'
-import axios from 'axios'
 
 const style = {
 	border: '1px dashed gray',
@@ -11,12 +14,17 @@ const style = {
   marginBottom: '10px',
 	cursor: 'move',
   borderRadius: '10px',
-  color: 'black'
+  color: 'black',
+  display: 'flex',
+  flexDirection: 'column'
+
 }
 
 
 
 export default function Card ({pedido}) {
+
+  const { setOpenModal, cancelarPedido } = useContext(Context)
   const [{isDragging}, drag] = useDrag(() => ({
     type: ItemTypes.BOX,
     item: { pedido },
@@ -50,6 +58,13 @@ export default function Card ({pedido}) {
       })}
       Total pedido: {parseInt(pedido.totalPedido).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}<br/> <br/>
       {pedido.endereco === 'retirada123$$' ? 'Retirada' :  `Entrega: ${pedido.endereco}`}
+      
+      <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'right'}}>
+        <button onClick={() =>  {
+          setOpenModal()
+          cancelarPedido(pedido)
+        }} className='cancelar-pedido'>Cancelar Pedido</button>
+      </div>
     </div>
   )
 }
