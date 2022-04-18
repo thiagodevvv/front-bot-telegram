@@ -22,6 +22,10 @@ function SideBar() {
         <img alt='Ver Histórico' className='Icons' src="history.png" />
         <p>Histórico de Pedidos</p>  
       </div>
+      <div className='box-icons-sidebar'>
+        <img alt='Ver Histórico' className='Icons' src="trash.png" />
+        <p>Pedidos Cancelados</p>  
+      </div>
     </div>
   )
 }
