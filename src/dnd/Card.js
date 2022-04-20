@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { Context } from '../Context/StateContext'
 import { useDrag } from 'react-dnd'
 import { ItemTypes } from './ItemTypes'
+import deParaStatus from '../deParaStatus.json'
 
 const style = {
 	border: '1px dashed gray',
@@ -31,8 +32,11 @@ export default function Card ({pedido}) {
     end: async (item, monitor) => {
       const dropResult = monitor.getDropResult()
       if(item && dropResult ) {
+        console.log(dropResult.name)
+        const status = deParaStatus[dropResult.name]
+        console.log(`depara status: ${status}`)
         await axios.post('http://localhost:8000/dev/alterarStatusPedido', {
-          status: dropResult.name === 'Aceito/Fazendo' ? 1 : 2,
+          status: status,
           id: item.pedido._id
         })
         alert(`Pedido: ${item.pedido._id} Adicionado em  ${dropResult.name}`)
@@ -59,11 +63,12 @@ export default function Card ({pedido}) {
       Total pedido: {parseInt(pedido.totalPedido).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}<br/> <br/>
       {pedido.endereco === 'retirada123$$' ? 'Retirada' :  `Entrega: ${pedido.endereco}`}
       
-      <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'right'}}>
+      <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: 10}}>
         <button onClick={() =>  {
           setOpenModal()
           cancelarPedido(pedido)
         }} className='cancelar-pedido'>Cancelar Pedido</button>
+        <p style={{opacity: 0.5}}>{pedido.data}</p>
       </div>
     </div>
   )
