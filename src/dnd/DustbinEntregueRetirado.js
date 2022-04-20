@@ -10,7 +10,7 @@ const style = {
 export default function DustbinFinish ({pedidos}) {
   const [{canDrop, isOver}, drop] = useDrop(() => ({
     accept: ItemTypes.BOX,
-    drop: () => ({name: 'Pronto para Entrega/Retirada'}),
+    drop: () => ({name: 'Entregue/Retirado'}),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop()
@@ -29,7 +29,7 @@ export default function DustbinFinish ({pedidos}) {
     <div ref={drop} role={'Dustbin'} style={{...style, backgroundColor}}>
       {isActive ? 'Pronto para soltar' : ''}
       {!isActive ? pedidos.map(pedido => {
-        if(pedido.status == 2 ){
+        if(pedido.status == 4 ){
           return <Card key={pedido._id} pedido={pedido} />
         }
       }) : ''}

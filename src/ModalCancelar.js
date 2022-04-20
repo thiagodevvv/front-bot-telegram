@@ -3,6 +3,7 @@ import axios from 'axios'
 async function cancelarPedido (id, controlVisible) {
   try {
     const response = await axios.post('http://localhost:8000/dev/alterarStatusPedido', {
+      //status 99 cancela pedido
       status: 99,
       id: id
     })

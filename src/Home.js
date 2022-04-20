@@ -5,6 +5,8 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 import Card  from './dnd/Card'
 import Dustbin  from './dnd/Dustbin.js'
 import DustbinFinish from './dnd/DustbinFinish'
+import DustbinSaiuEntrega from './dnd/DustbinSaiuEntrega.js'
+import DustbinEntregueRetirado from './dnd/DustbinEntregueRetirado.js'
 import axios from 'axios'
 import { Context } from './Context/StateContext'
 import Modal from './ModalCancelar.js'
@@ -99,20 +101,28 @@ export default function Home () {
       <div className='container-home'>
         {isVisibleModal ? <Modal controlVisible={setOpenModal} pedido={pedidoCancelar}/> : ''}
         <div className='container-pedidos' style={{ overflow: 'hidden', clear: 'both' }}>
-          <h1 style={{marginLeft: 10}}>Pedidos</h1>
+          <h2 style={{marginLeft: 10}}>Pedidos</h2>
           {pedidos.map(pedido => {
             if(pedido.status == '0')
               return <Card key={pedido._id} pedido={pedido} />
           })}
         </div>
         <div style={{ overflow: 'hidden', clear: 'both' }} className="container-accept-pedido-doing">
-        <h1 style={{marginLeft: 10}}>Aceito/Fazendo</h1>
+        <h2 style={{marginLeft: 10}}>Aceito/Fazendo</h2>
           <Dustbin pedidos={pedidos} />
        
         </div>
         <div style={{ overflow: 'hidden', clear: 'both' }} className="pedido-done">
-          <h1 style={{marginLeft: 10}}>Pronto Entrega/Retirada</h1>
+          <h2 style={{marginLeft: 10}}>Pronto Entrega/Retirada</h2>
           <DustbinFinish pedidos={pedidos} /> 
+        </div>
+        <div style={{ overflow: 'hidden', clear: 'both' }} className="pedido-done">
+          <h2 style={{marginLeft: 10}}>Saiu para Entrega</h2>
+          <DustbinSaiuEntrega pedidos={pedidos} /> 
+        </div>
+        <div style={{ overflow: 'hidden', clear: 'both' }} className="pedido-done">
+          <h2 style={{marginLeft: 10}}>Entregue/Retirado</h2>
+          <DustbinEntregueRetirado pedidos={pedidos} /> 
         </div>
       </div>
     </DndProvider>
