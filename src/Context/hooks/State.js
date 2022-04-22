@@ -8,6 +8,7 @@ export default function StatePages() {
   const [page, setPage] = useState('0')
   const [isVisibleModal, setIsVisibleModal] = useState(false)
   const [pedidoCancelar, setPedidoCancelar] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
   function setPageView (page)  {
     setPage(page)
   }
@@ -19,12 +20,17 @@ export default function StatePages() {
   function cancelarPedido (pedido) {
     setPedidoCancelar(pedido)
   }
+  function setLoading(state) {
+    setIsLoading(state)
+  }
   return {
     page,
     isVisibleModal,
     pedidoCancelar, 
+    isLoading,
     setPageView,
     setOpenModal,
-    cancelarPedido
+    cancelarPedido,
+    setLoading
   }
 }

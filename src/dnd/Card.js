@@ -25,20 +25,20 @@ const style = {
 
 export default function Card ({pedido}) {
 
-  const { setOpenModal, cancelarPedido } = useContext(Context)
+  const { setOpenModal, cancelarPedido, setLoading } = useContext(Context)
   const [{isDragging}, drag] = useDrag(() => ({
     type: ItemTypes.BOX,
     item: { pedido },
     end: async (item, monitor) => {
       const dropResult = monitor.getDropResult()
       if(item && dropResult ) {
-        console.log(dropResult.name)
+        setLoading(true)
         const status = deParaStatus[dropResult.name]
-        console.log(`depara status: ${status}`)
         await axios.post('http://localhost:8000/dev/alterarStatusPedido', {
           status: status,
           id: item.pedido._id
         })
+        setLoading(false)
         alert(`Pedido: ${item.pedido._id} Adicionado em  ${dropResult.name}`)
       }
     },

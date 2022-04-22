@@ -10,6 +10,7 @@ import DustbinEntregueRetirado from './dnd/DustbinEntregueRetirado.js'
 import axios from 'axios'
 import { Context } from './Context/StateContext'
 import Modal from './ModalCancelar.js'
+import Loading from './Loading'
 // const pedidos = [ {
 //   "_id": "624ad8daf46883dfe21bbee7",
 //   "carrinho": [
@@ -85,7 +86,7 @@ async function pollingPedidos(setPedidos) {
 
 
 export default function Home () {
-  const { isVisibleModal, setOpenModal, pedidoCancelar } = useContext(Context)
+  const { isVisibleModal, setOpenModal, pedidoCancelar, isLoading } = useContext(Context)
   const [pedidos, setPedidos] = useState([])
   useEffect(() => {
     pollingPedidos(setPedidos)
@@ -99,7 +100,7 @@ export default function Home () {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className='container-home'>
-        {isVisibleModal ? <Modal controlVisible={setOpenModal} pedido={pedidoCancelar}/> : ''}
+        {isVisibleModal ? <Modal controlVisible={setOpenModal} pedido={pedidoCancelar}/> : isLoading ? <Loading /> : ''}
         <div className='container-pedidos' style={{ overflow: 'hidden', clear: 'both' }}>
           <h2 style={{marginLeft: 10}}>Pedidos</h2>
           {pedidos.map(pedido => {
